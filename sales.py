@@ -85,10 +85,37 @@ import pickle
 
 st.set_page_config(page_title="BigMart Sales Predictor", layout="wide")
 
-@st.cache_resource
+'''@st.cache_resource
 def load_model():
     with open("C:/Users/Windows10/Desktop/first app/salesforcast/bigmart_model.pkl", "rb") as f:
+        return pickle.load(f)'''
+
+
+
+
+
+
+from pathlib import Path
+import pickle
+import streamlit as st
+
+@st.cache_resource
+def load_model():
+    model_path = Path(__file__).parent / "bigmart_model.pkl"
+    with open(model_path, "rb") as f:
         return pickle.load(f)
+
+
+
+
+
+
+
+
+
+
+
+
 
 model = load_model()
 
